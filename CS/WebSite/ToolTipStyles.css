@@ -1,0 +1,8 @@
+﻿.tooltip
+{
+	position: absolute;
+	visibility: hidden; 
+	border: solid black 1px;
+    background-color: Aqua;
+    font-family: Arial;
+}
