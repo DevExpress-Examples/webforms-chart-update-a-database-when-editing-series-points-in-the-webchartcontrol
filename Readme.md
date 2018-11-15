@@ -1,3 +1,11 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [DataManagement.cs](./CS/WebSite/App_Code/DataManagement.cs) (VB: [DataManagement.vb](./VB/WebSite/App_Code/DataManagement.vb))
+* [ClientScripts.js](./CS/WebSite/ClientScripts.js) (VB: [ClientScripts.js](./VB/WebSite/ClientScripts.js))
+* [Default.aspx](./CS/WebSite/Default.aspx) (VB: [Default.aspx.vb](./VB/WebSite/Default.aspx.vb))
+* [Default.aspx.cs](./CS/WebSite/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/WebSite/Default.aspx.vb))
+<!-- default file list end -->
 # How to post data back to the database when editing series points in the WebChartControl
 
 
