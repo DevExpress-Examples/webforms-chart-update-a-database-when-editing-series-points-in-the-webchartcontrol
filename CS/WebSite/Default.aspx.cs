@@ -14,11 +14,11 @@ public partial class _Default : System.Web.UI.Page {
         BindChartToData(DataManagement.RetrieveDataCache());
 
         if(!IsPostBack) {
-            cbLabels.Checked = WebChartControl1.Series[0].Label.Visible;
+            cbLabels.Checked = WebChartControl1.Series[0].LabelsVisibility == DevExpress.Utils.DefaultBoolean.True;
             cbFixedRange.Checked = !((XYDiagram)WebChartControl1.Diagram).AxisY.Range.Auto;
         }
         
-        WebChartControl1.Series[0].Label.Visible = cbLabels.Checked;
+        WebChartControl1.Series[0].LabelsVisibility = cbLabels.Checked ? DevExpress.Utils.DefaultBoolean.True : DevExpress.Utils.DefaultBoolean.False;
         PrepareAxisRange();
     }
 
@@ -38,21 +38,17 @@ public partial class _Default : System.Web.UI.Page {
         // Adjust series label options
         ((RangeBarSeriesLabel)series.Label).Position = RangeBarLabelPosition.Inside;
         series.Label.ResolveOverlappingMode = ResolveOverlappingMode.Default;
-        series.PointOptions.ValueDateTimeOptions.Format = DateTimeFormat.Custom;
-        series.PointOptions.ValueDateTimeOptions.FormatString = "MM'/'dd'/'yyyy";
+        series.Label.PointOptions.ValueDateTimeOptions.Format = DateTimeFormat.Custom;
+        series.Label.PointOptions.ValueDateTimeOptions.FormatString = "MM'/'dd'/'yyyy";
 
         // Adjust axes options
-        ((XYDiagram)WebChartControl1.Diagram).AxisY.DateTimeOptions.Format = DateTimeFormat.Custom;
-        ((XYDiagram)WebChartControl1.Diagram).AxisY.DateTimeOptions.FormatString = "MM'/'dd";
+        ((XYDiagram)WebChartControl1.Diagram).AxisY.Label.DateTimeOptions.Format = DateTimeFormat.Custom;
+        ((XYDiagram)WebChartControl1.Diagram).AxisY.Label.DateTimeOptions.FormatString = "MM'/'dd";
         ((XYDiagram)WebChartControl1.Diagram).AxisY.Label.Staggered = true;
         ((XYDiagram)WebChartControl1.Diagram).AxisX.GridLines.Visible = true;
 
-        ((XYDiagram)WebChartControl1.Diagram).AxisY.GridSpacingAuto = false;
-        ((XYDiagram)WebChartControl1.Diagram).AxisY.GridSpacing = 1;
-
         ((XYDiagram)WebChartControl1.Diagram).AxisY.Range.SideMarginsEnabled = false;
-        ((XYDiagram)WebChartControl1.Diagram).AxisY.DateTimeMeasureUnit = DateTimeMeasurementUnit.Hour;
-        ((XYDiagram)WebChartControl1.Diagram).AxisY.DateTimeGridAlignment = DateTimeMeasurementUnit.Day;
+        
 
         WebChartControl1.Legend.AlignmentHorizontal = LegendAlignmentHorizontal.Right;
 
