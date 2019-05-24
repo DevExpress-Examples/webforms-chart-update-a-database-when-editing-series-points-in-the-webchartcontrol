@@ -1,8 +1,8 @@
 ﻿window.onload = function() {
-    _aspxAttachEventToDocument("mousedown", OnMouseDown);
-    _aspxAttachEventToDocument("mouseup", OnMouseUp);
-    _aspxAttachEventToDocument("mousemove", OnMouseMove);
-    _aspxPreventElementDragAndSelect(chart.GetMainDOMElement(), false);
+    ASPx.Evt.AttachEventToDocument("mousedown", OnMouseDown);
+    ASPx.Evt.AttachEventToDocument("mouseup", OnMouseUp);
+    ASPx.Evt.AttachEventToDocument("mousemove", OnMouseMove);
+    ASPx.Evt.PreventElementDragAndSelect(chart.GetMainDOMElement(), false);
 }
 
 var seriesPoint = null;
@@ -11,15 +11,16 @@ var draggingIndex = -1;
 var draggingOffsetTime = null;
 var dragging = false;
 
+
 // Event handlers
 
 function OnMouseDown(evt) {
-    if (_aspxGetIsLeftButtonPressed(evt))
+    if (ASPx.Evt.IsLeftButtonPressed(evt))
         dragging = UpdateDraggingFlag(evt);
     
     if (dragging) {
-        _aspxSetAbsoluteX(document.getElementById('draggingToolTip'), _aspxGetEventX(evt) + 5);
-        _aspxSetAbsoluteY(document.getElementById('draggingToolTip'), _aspxGetEventY(evt) + 10);
+        ASPxClientUtils.SetAbsoluteX(document.getElementById('draggingToolTip'), ASPxClientUtils.GetEventX(evt) + 5);
+        ASPxClientUtils.SetAbsoluteY(document.getElementById('draggingToolTip'), ASPxClientUtils.GetEventY(evt) + 10);
         document.getElementById('draggingToolTip').style.visibility = 'visible'; 
 
         UpdateDraggingText();
@@ -52,8 +53,8 @@ function OnMouseMove(evt) {
             chart.SetCursor('e-resize');
         
         if (dragging && draggingIndex >= 0 && !coords.IsEmpty()) {
-            _aspxSetAbsoluteX(document.getElementById('draggingToolTip'), _aspxGetEventX(evt) + 5);
-            _aspxSetAbsoluteY(document.getElementById('draggingToolTip'), _aspxGetEventY(evt) + 10);
+            ASPxClientUtils.SetAbsoluteX(document.getElementById('draggingToolTip'), ASPxClientUtils.GetEventX(evt) + 5);
+            ASPxClientUtils.SetAbsoluteY(document.getElementById('draggingToolTip'), ASPxClientUtils.GetEventY(evt) + 10);
 
             if (draggingIndex < 2)
                 seriesPoint.values[draggingIndex] = coords.dateTimeValue;
@@ -76,12 +77,12 @@ function UpdateDraggingFlag(evt) {
     if (seriesPoint == null)
         draggingIndex = -1;
 
-    var srcElement = _aspxGetEventSource(evt);   
+    var srcElement = ASPx.Evt.GetEventSource(evt);   
     if (chart.GetMainDOMElement() != srcElement.parentElement)
         return false;
    
-    var x = _aspxGetEventX(evt) - _aspxGetAbsoluteX(srcElement);
-    var y = _aspxGetEventY(evt) - _aspxGetAbsoluteY(srcElement);    
+    var x = ASPxClientUtils.GetEventX(evt) - ASPxClientUtils.GetAbsoluteX(srcElement);
+    var y = ASPxClientUtils.GetEventY(evt) - ASPxClientUtils.GetAbsoluteY(srcElement);    
     var diagram = chart.GetChart().diagram;    
     coords = diagram.PointToDiagram(x, y);
     
@@ -133,3 +134,23 @@ function UpdateDraggingText() {
 function GetDateString(date) {
     return (date.getUTCMonth() + 1) + "/" + date.getUTCDate() + "/" + date.getUTCFullYear();
 }
+
+
+var getTimeZoneOffset = function (date) {
+    var utcFullYear = date.getUTCFullYear();
+    var utcDate = new Date(utcFullYear, date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(),
+        date.getUTCMinutes(), date.getUTCSeconds(), date.getUTCMilliseconds());
+    if (utcFullYear < 100)
+        utcDate.setFullYear(utcFullYear);
+    return utcDate - date;
+};
+_aspxToUtcTime = function (date) {
+    var result = new Date();
+    result.setTime(date.valueOf() + getTimeZoneOffset(date));
+    return result;
+};
+_aspxToLocalTime = function (date) {
+    var result = new Date();
+    result.setTime(date.valueOf() - getTimeZoneOffset(date));
+    return result;
+};
