@@ -8,7 +8,7 @@ Imports DevExpress.XtraCharts
 Partial Public Class _Default
 	Inherits System.Web.UI.Page
 	Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
-		DevExpress.Web.ASPxClasses.ASPxWebControl.RegisterBaseScript(Me)
+		DevExpress.Web.ASPxWebControl.RegisterBaseScript(Me)
 
 		If Page.Request.Form("__EVENTTARGET") = btnResoreData.ID Then
 			DataManagement.RestoreDatabase()
