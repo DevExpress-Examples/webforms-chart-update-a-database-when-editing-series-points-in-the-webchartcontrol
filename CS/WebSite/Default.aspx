@@ -18,7 +18,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <dx:ASPxCheckBox ID="cbLabels" runat="server" AutoPostBack="True" Text="Labels">
+        <dx:ASPxCheckBox ID="cbLabels" runat="server" AutoPostBack="True" Text="Labels"> 
         </dx:ASPxCheckBox>
         <dx:ASPxCheckBox ID="cbFixedRange" runat="server" AutoPostBack="True" Text="Fixed range"
             OnCheckedChanged="cbFixedRange_CheckedChanged">
