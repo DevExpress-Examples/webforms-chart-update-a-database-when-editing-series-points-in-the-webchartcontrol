@@ -7,6 +7,9 @@
 * [Default.aspx.cs](./CS/WebSite/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/WebSite/Default.aspx.vb))
 <!-- default file list end -->
 # How to post data back to the database when editing series points in the WebChartControl
+<!-- run online -->
+**[[Run Online]](https://codecentral.devexpress.com/e2466/)**
+<!-- run online end -->
 
 
 <p>This example demonstrates how to update a database according to changes made in the gantt chart. The end user can move both start- and end-points of any gantt bar or drag and drop it within a diagram. All changes are persisted in the database. Data exchange is performed via regular ADO.NET objects.</p><p>See also:<br />
