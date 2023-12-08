@@ -4,10 +4,8 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
 
-# Chart for Web Forms - How to Post Data Back to the Database when Editing Series Points in the WebChartControl
-<!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/e2466/)**
-<!-- run online end -->
+# Chart for Web Forms - How to Update a Database when Editing Series Points in the WebChartControl
+
 <p>This example demonstrates how to update a database according to changes made in the gantt chart. The end user can move both start- and end-points of any gantt bar or drag and drop it within a diagram. All changes are persisted in the database. Data exchange is performed via regular ADO.NET objects.</p>
 
 ## Files to Review 
