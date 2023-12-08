@@ -12,7 +12,7 @@
 <!-- default file list end -->
 # How to post data back to the database when editing series points in the WebChartControl
 <!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/e2466/)**
+**[[Run Online]](https://codecentral.devexpress.com/128575306/)**
 <!-- run online end -->
 
 
